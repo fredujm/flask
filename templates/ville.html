@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="info" class="zone_info">
+    <h1>Fiche de la commune de<br/>{{ municipality.nom_ville }}</h1>
+    <div id="affiche">
+        <h2>Données administratives</h2>
+        <ul>
+            <li>nom de commune : {{ municipality.nom_ville }}</li>
+            <li>Identifiant INSEE  : {{ municipality.insee_code }}</li>
+            <li>Code postal  : {{ municipality.cp }}</li>
+            <li>Département  : {{ municipality.nom_dept }}</li>
+            <li>Région  : {{ municipality.nom_region }}</li>
+        </ul>
+        <h2>Coordonnées géographiques GPS</h2>
+        <ul>
+            <li>Longitude : {{ municipality.gps_lng }}</li>
+            <li>Lattitude : {{ municipality.gps_lat }}</li>
+        </ul>
+    </div>
+    <p>&nbsp;</p>
+</div>
+{% endblock content %}
