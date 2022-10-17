@@ -33,6 +33,5 @@ def getDept(dept_id):
 @app.route("/mun/<string:mun_id>", methods=['GET'])
 def getMunicipality(mun_id):
     result = Municipality.query.filter(Municipality.mun_id == mun_id).first()
-    return render_template('municipality.html', municipality=result)
+    return render_template('ville.html', municipality=result)
 
-    
