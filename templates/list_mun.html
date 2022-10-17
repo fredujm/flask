@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="info" class="zone_info">
+    <h1>Liste des communes de France</h1>
+    <div id="affiche">
+        <p> {{ muns.total }} communes composent le département</p>
+        <p class="colonne3">
+        {% for muni in muns.items %}
+        {{ muni.mun_name }}<br/>
+        {% endfor %}
+        </p>
+    </div>
+    <p>&nbsp;</p>
+</div>
+<p class="pagination">
+{% for page_num in muns.iter_pages() %}
+    {% if page_num %}
+        {% if muns.page==page_num %}
+            <a class="btn_current" href="{{ url_for('list_muns', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn" href="{{ url_for('list_muns', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+</p>
+{% endblock content %}

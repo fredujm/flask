@@ -10,4 +10,10 @@ def index():
 def list_regions():
     regions = Region.query.all()
     return render_template('list_regions.html', regions=regions)
-    
+
+@app.route("/mun", methods=['GET'])
+def list_muns():
+    page = request.args.get('page', 1, type=int)
+    results = Municipality.query.order_by(Municipality.mun_name.asc()).paginate(page=page, per_page=45)
+    return render_template('list_mun.html', muns=results)
+
