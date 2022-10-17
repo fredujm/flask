@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="info" class="zone_info">
+    <h1>Consultation du/des département(s) de la région<br />{{ depts[0].theregion.region_name }}</h1>
+    <div id="affiche">
+        <table class="contact">
+            <tr>
+                <th>Region</th>
+                <th>Départements</th>
+            </tr>
+            <tr>
+                <td rowspan={{ depts|count }}>{{ depts[0].theregion.region_name }}</td>
+                <td><a href="/dept/{{ depts[0].dept_id }}">{{ depts[0].theregion.dept_name }}</a></td>
+            </tr>
+            {% for dept in depts[1:] %}
+            <tr>
+                <td><a href="/dept/{{ dept.dept_id }}">{{ dept.dept_name }}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <p>Cliquez sur le département que vous souhaitez consulter pour afficher ses communes.</p>
+    <p>&nbsp;</p>
+</div>
+{% endblock content %}

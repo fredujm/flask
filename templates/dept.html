@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="info" class="zone_info">
+    <h1>Consultation des communes du département<br /> {{ dept.dept_name }}</h1>
+    <div id="affiche">
+        <h2> {{ municipalities.total }} communes composent le département</h2>
+        <p class="colonne4">
+            {% for ville in municipalities.items %}
+            <a href="/mun/{{ ville.mun_id }}">{{ ville.mun_name }}</a><br />
+            {% endfor %}
+        </p>
+    </div>
+    <p>&nbsp;</p>
+</div>
+<p class="pagination">
+{% for page_num in municipalities.iter_pages() %}
+    {% if page_num %}
+        {% if municipalities.page==page_num %}
+            <a class="btn_current" href="{{ url_for('getDept', dept_id=dept.dept_id, page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn" href="{{ url_for('getDept', dept_id=dept.dept_id, page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+</p>
+
+{% endblock content %}
