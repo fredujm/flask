@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div id="info" class="zone_info">
+    <h1>Formulaire de consultation<br/>des régions française</h1>
+    <div id="affiche">
+        <table class="contact">
+            <tr><th class="col1">identifiant</th><th>Nom</th></tr>
+            {% for region in regions %}
+            <tr><td><a href="/region/{{ region.region_id }}">{{ region.region_id }}</a></td><td><a href="/region/{{ region.region_id }}">{{ region.region_name }}</a></td></tr>
+            {% endfor %}
+        </table>
+    </div>
+    <p>&nbsp;</p>
+</div>
+{% endblock content %}
